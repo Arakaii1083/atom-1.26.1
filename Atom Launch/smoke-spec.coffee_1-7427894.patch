@@ -1,0 +1,64 @@
+From 74278948579b67c2a85c408ff447bb21f0dc40a6 Mon Sep 17 00:00:00 2001
+From: Arakaii1083 <arakaii@yahoo.com>
+Date: Sat, 5 May 2018 14:45:36 -0400
+Subject: [PATCH] smoke-spec.coffee 1
+
+---
+ Atom Launch/init.txt |  0
+ smoke-spec.coffee    | 38 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 38 insertions(+)
+ create mode 100644 Atom Launch/init.txt
+ create mode 100644 smoke-spec.coffee
+
+diff --git a/Atom Launch/init.txt b/Atom Launch/init.txt
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/Atom Launch/init.txt
+diff --git a/smoke-spec.coffee b/smoke-spec.coffee
+new file mode 100644
+index 0000000..e147cf5
+--- /dev/null
++++ b/smoke-spec.coffee
+@@ -0,0 +1,38 @@
++fs = require 'fs-plus'
++path = require 'path'
++season = require 'season'
++temp = require('temp').track()
++runAtom = require './helpers/start-atom'
++
++describe "Smoke Test", ->
++  return unless process.platform is 'darwin' # Fails on win32
++
++  atomHome = temp.mkdirSync('atom-home')
++
++  beforeEach ->
++    jasmine.useRealClock()
++    season.writeFileSync(path.join(atomHome, 'config.cson'), {
++      '*': {
++        welcome: {showOnStartup: false},
++        core: {
++          telemetryConsent: 'no',
++          disabledPackages: ['github']
++        }
++      }
++    })
++
++  it "can open a file in Atom and perform basic operations on it", ->
++    tempDirPath = temp.mkdirSync("empty-dir")
++    runAtom [path.join(tempDirPath, "new-file")], {ATOM_HOME: atomHome}, (client) ->
++      client
++        .treeViewRootDirectories()
++        .then ({value}) -> expect(value).toEqual([tempDirPath])
++        .waitForExist("atom-text-editor", 5000)
++        .then (exists) -> expect(exists).toBe true
++        .waitForPaneItemCount(1, 1000)
++        .click("atom-text-editor")
++        .waitUntil((-> @execute(-> document.activeElement.closest('atom-text-editor'))), 5000)
++        .keys("Hello!")
++        .execute -> atom.workspace.getActiveTextEditor().getText()
++        .then ({value}) -> expect(value).toBe "Hello!"
++        .dispatchCommand("editor:delete-line")
+--
+Working Copy 3.3.5
+
