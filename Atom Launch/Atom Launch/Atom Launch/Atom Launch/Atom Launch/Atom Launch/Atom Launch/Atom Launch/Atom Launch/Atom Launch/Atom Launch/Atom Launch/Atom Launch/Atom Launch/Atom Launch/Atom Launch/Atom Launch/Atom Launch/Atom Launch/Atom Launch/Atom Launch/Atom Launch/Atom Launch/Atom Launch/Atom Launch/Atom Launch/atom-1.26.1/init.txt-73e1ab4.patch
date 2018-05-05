@@ -1,0 +1,18 @@
+From 73e1ab4120d178a829bbce42c1d7fb70f0bf247f Mon Sep 17 00:00:00 2001
+From: Arakaii1083 <arakaii@yahoo.com>
+Date: Sat, 5 May 2018 14:47:46 -0400
+Subject: [PATCH] init.txt
+
+---
+ atom-1.26.1/init.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 atom-1.26.1/init.txt
+
+diff --git a/atom-1.26.1/init.txt b/atom-1.26.1/init.txt
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/atom-1.26.1/init.txt
+--
+Working Copy 3.3.5
+
