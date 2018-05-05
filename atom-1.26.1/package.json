@@ -1,192 +1,176 @@
 {
-  "name": "atom",
-  "productName": "Atom",
-  "version": "1.26.1",
-  "description": "A hackable text editor for the 21st Century.",
-  "main": "./src/main-process/main.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/atom/atom.git"
+  "name": "kite",
+  "main": "./lib/kite",
+  "version": "0.86.0",
+  "description": "Python programming copilot — Kite shows cloud-powered completions, documentation, and examples.",
+  "repository": "https://github.com/kiteco/atom-plugin",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
   },
-  "bugs": {
-    "url": "https://github.com/atom/atom/issues"
-  },
-  "license": "MIT",
-  "electronVersion": "1.7.11",
-  "dependencies": {
-    "@atom/nsfw": "^1.0.18",
-    "@atom/watcher": "1.0.3",
-    "@atom/source-map-support": "^0.3.4",
-    "async": "0.2.6",
-    "atom-keymap": "8.2.10",
-    "atom-select-list": "^0.7.0",
-    "atom-ui": "0.4.1",
-    "babel-core": "5.8.38",
-    "cached-run-in-this-context": "0.4.1",
-    "chai": "3.5.0",
-    "chart.js": "^2.3.0",
-    "clear-cut": "^2.0.2",
-    "coffee-script": "1.12.7",
-    "color": "^0.7.3",
-    "dedent": "^0.7.0",
-    "devtron": "1.3.0",
-    "etch": "^0.12.6",
-    "event-kit": "^2.4.0",
-    "find-parent-dir": "^0.3.0",
-    "first-mate": "7.1.0",
-    "focus-trap": "^2.3.0",
-    "fs-admin": "^0.1.6",
-    "fs-plus": "^3.0.1",
-    "fstream": "0.1.24",
-    "fuzzaldrin": "^2.1",
-    "git-utils": "5.3.1",
-    "glob": "^7.1.1",
-    "grim": "1.5.0",
-    "jasmine-json": "~0.0",
-    "jasmine-reporters": "1.1.0",
-    "jasmine-tagged": "^1.1.4",
-    "key-path-helpers": "^0.4.0",
-    "less-cache": "1.1.0",
-    "line-top-index": "0.3.1",
-    "marked": "^0.3.12",
-    "minimatch": "^3.0.3",
-    "mocha": "2.5.1",
-    "mocha-junit-reporter": "^1.13.0",
-    "mocha-multi-reporters": "^1.1.4",
-    "mock-spawn": "^0.2.6",
-    "normalize-package-data": "^2.0.0",
-    "nslog": "^3",
-    "oniguruma": "6.2.1",
-    "pathwatcher": "8.0.1",
-    "postcss": "5.2.4",
-    "postcss-selector-parser": "2.2.1",
-    "property-accessors": "^1.1.3",
-    "random-words": "0.0.1",
-    "resolve": "^1.1.6",
-    "scandal": "^3.1.0",
-    "scoped-property-store": "^0.17.0",
-    "scrollbar-style": "^3.2",
-    "season": "^6.0.2",
-    "semver": "^4.3.3",
-    "service-hub": "^0.7.4",
-    "sinon": "1.17.4",
-    "temp": "^0.8.3",
-    "text-buffer": "13.11.9",
-    "tree-sitter": "^0.11.0",
-    "typescript-simple": "1.0.0",
-    "underscore-plus": "^1.6.6",
-    "winreg": "^1.2.1",
-    "yargs": "^3.23.0"
-  },
-  "packageDependencies": {
-    "atom-dark-syntax": "0.29.0",
-    "atom-dark-ui": "0.53.2",
-    "atom-light-syntax": "0.29.0",
-    "atom-light-ui": "0.46.2",
-    "base16-tomorrow-dark-theme": "1.5.0",
-    "base16-tomorrow-light-theme": "1.5.0",
-    "one-dark-ui": "1.11.0",
-    "one-light-ui": "1.11.0",
-    "one-dark-syntax": "1.8.2",
-    "one-light-syntax": "1.8.2",
-    "solarized-dark-syntax": "1.1.4",
-    "solarized-light-syntax": "1.1.4",
-    "about": "1.8.0",
-    "archive-view": "0.64.3",
-    "autocomplete-atom-api": "0.10.7",
-    "autocomplete-css": "0.17.5",
-    "autocomplete-html": "0.8.4",
-    "autocomplete-plus": "2.40.5",
-    "autocomplete-snippets": "1.12.0",
-    "autoflow": "0.29.3",
-    "autosave": "0.24.6",
-    "background-tips": "0.28.0",
-    "bookmarks": "0.45.1",
-    "bracket-matcher": "0.89.1",
-    "command-palette": "0.43.5",
-    "dalek": "0.2.2",
-    "deprecation-cop": "0.56.9",
-    "dev-live-reload": "0.48.1",
-    "encoding-selector": "0.23.8",
-    "exception-reporting": "0.43.1",
-    "find-and-replace": "0.215.5",
-    "fuzzy-finder": "1.8.1",
-    "github": "0.12.0",
-    "git-diff": "1.3.9",
-    "go-to-line": "0.33.0",
-    "grammar-selector": "0.50.0",
-    "image-view": "0.62.4",
-    "incompatible-packages": "0.27.3",
-    "keybinding-resolver": "0.38.1",
-    "line-ending-selector": "0.7.5",
-    "link": "0.31.4",
-    "markdown-preview": "0.159.20",
-    "metrics": "1.2.6",
-    "notifications": "0.70.5",
-    "open-on-github": "1.3.1",
-    "package-generator": "1.3.0",
-    "settings-view": "0.254.2",
-    "snippets": "1.3.3",
-    "spell-check": "0.73.4",
-    "status-bar": "1.8.15",
-    "styleguide": "0.49.10",
-    "symbols-view": "0.118.2",
-    "tabs": "0.109.1",
-    "timecop": "0.36.2",
-    "tree-view": "0.221.3",
-    "update-package-dependencies": "0.13.1",
-    "welcome": "0.36.6",
-    "whitespace": "0.37.5",
-    "wrap-guide": "0.40.3",
-    "language-c": "0.59.3",
-    "language-clojure": "0.22.7",
-    "language-coffee-script": "0.49.3",
-    "language-csharp": "1.0.1",
-    "language-css": "0.42.10",
-    "language-gfm": "0.90.3",
-    "language-git": "0.19.1",
-    "language-go": "0.45.3",
-    "language-html": "0.49.0",
-    "language-hyperlink": "0.16.3",
-    "language-java": "0.29.0",
-    "language-javascript": "0.128.5",
-    "language-json": "0.19.1",
-    "language-less": "0.34.2",
-    "language-make": "0.22.3",
-    "language-mustache": "0.14.5",
-    "language-objective-c": "0.15.1",
-    "language-perl": "0.38.1",
-    "language-php": "0.43.2",
-    "language-property-list": "0.9.1",
-    "language-python": "0.49.4",
-    "language-ruby": "0.71.4",
-    "language-ruby-on-rails": "0.25.3",
-    "language-sass": "0.61.4",
-    "language-shellscript": "0.26.3",
-    "language-source": "0.9.0",
-    "language-sql": "0.25.10",
-    "language-text": "0.7.4",
-    "language-todo": "0.29.4",
-    "language-toml": "0.18.2",
-    "language-typescript": "0.3.3",
-    "language-xml": "0.35.2",
-    "language-yaml": "0.32.0"
-  },
-  "private": true,
   "scripts": {
-    "preinstall": "node -e 'process.exit(0)'",
-    "test": "node script/test"
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
-  "standard": {
-    "env": {
-      "atomtest": true,
-      "browser": true,
-      "jasmine": true,
-      "node": true
+  "configSchema": {
+    "editorMetricsEnabled": {
+      "type": "string",
+      "enum": [
+        "not specified",
+        "yes",
+        "no"
+      ],
+      "default": "not specified",
+      "title": "Editor metrics enabled",
+      "description": "Kite can periodically send information to our servers about the status of the Kite application to ensure that is is running correctly"
     },
-    "globals": [
-      "atom",
-      "snapshotResult"
-    ]
+    "showWelcomeNotificationOnStartup": {
+      "type": "boolean",
+      "default": true,
+      "title": "Show welcome notification on startup",
+      "description": "Whether to display the Kite welcome notification on startup"
+    },
+    "enableCompletions": {
+      "type": "boolean",
+      "default": true,
+      "title": "Enable completions",
+      "description": "Show auto-completions from Kite as Atom suggestions"
+    },
+    "enableHoverUI": {
+      "type": "boolean",
+      "default": true,
+      "title": "Enable hover info",
+      "description": "Show hover information when placing the mouse over a programming expression"
+    },
+    "sidebarPosition": {
+      "type": "string",
+      "default": "right",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "title": "Sidebar position",
+      "description": "Defines where to place the sidebar"
+    },
+    "sidebarWidth": {
+      "type": "integer",
+      "default": 400,
+      "title": "Sidebar width",
+      "description": "Defines the width of the sidebar. When the sidebar is displayed using the new dock API, this value will serve as the preferred width."
+    },
+    "openSidebarOnStartup": {
+      "type": "boolean",
+      "default": false,
+      "title": "Open sidebar on startup",
+      "description": "Makes the sidebar appear on Atom startup"
+    },
+    "enableErrorRescue": {
+      "type": "boolean",
+      "default": true,
+      "title": "Enable Error Rescue",
+      "description": "Allow Error Rescue to make code fixes on save"
+    },
+    "actionWhenErrorRescueFixesCode": {
+      "type": "string",
+      "default": "Reopen sidebar",
+      "enum": [
+        "Reopen sidebar",
+        "Fix code quietly"
+      ],
+      "title": "Action when Error Rescue fixes code",
+      "description": "Choose whether Error Rescue should (re)open its sidebar upon making fixes, or do it quietly"
+    },
+    "maxVisibleSuggestionsAlongSignature": {
+      "type": "integer",
+      "default": 3,
+      "title": "Max visible suggestions along signature"
+    },
+    "searchIconPosition": {
+      "type": "string",
+      "default": "top-right",
+      "enum": [
+        "top-right",
+        "bottom-right",
+        "hidden"
+      ],
+      "title": "Search icon position"
+    },
+    "hideDocumentationWhenSignatureIsAvailable": {
+      "type": "boolean",
+      "default": true,
+      "title": "Hide documentation when signature is available",
+      "description": "Display only signature if both the signature and documentation are available at the same time"
+    },
+    "collapseLongSummaries": {
+      "type": "boolean",
+      "default": true,
+      "title": "Collapse long summaries"
+    },
+    "loggingLevel": {
+      "type": "string",
+      "default": "info",
+      "enum": [
+        "silly",
+        "verbose",
+        "debug",
+        "info",
+        "warning",
+        "error"
+      ],
+      "title": "Logging level",
+      "description": "The verbosity level of Kite logs"
+    },
+    "pollingInterval": {
+      "type": "integer",
+      "default": 15000,
+      "min": 1000,
+      "max": 60000,
+      "title": "Polling interval"
+    },
+    "developerMode": {
+      "type": "boolean",
+      "default": false,
+      "title": "Developer mode",
+      "description": "Enable Kite developer mode, displaying received data in the various UIs"
+    }
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "completions"
+      }
+    }
+  },
+  "consumedServices": {
+    "status-bar": {
+      "versions": {
+        "^1.0.0": "consumeStatusBar"
+      }
+    }
+  },
+  "dependencies": {
+    "analytics-node": "^3.1.1",
+    "element-resize-detector": "^1.1.11",
+    "fuzzaldrin-plus": "^0.4.1",
+    "getmac": "^1.2.1",
+    "kite-installer": "^1.0.3",
+    "md5": "^2.2.0",
+    "rollbar": "^2.3.8",
+    "underscore-plus": "^1",
+    "tiny-relative-date": "^1.3.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.11.1",
+    "eslint-config": "^0.3.0",
+    "eslint-config-fbjs": "^1.1.1",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-flowtype": "^2.29.1",
+    "eslint-plugin-jasmine": "^2.2.0",
+    "eslint-plugin-prefer-object-spread": "^1.1.0",
+    "eslint-plugin-react": "^5.2.2",
+    "fbjs": "^0.8.6",
+    "javascript-obfuscator": "^0.8.3"
   }
 }

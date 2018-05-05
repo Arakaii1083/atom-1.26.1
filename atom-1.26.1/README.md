@@ -1,82 +1,99 @@
-![Atom](https://cloud.githubusercontent.com/assets/72919/2874231/3af1db48-d3dd-11e3-98dc-6066f8bc766f.png)
+## Atom Kite Plugin Documentation
 
-[![macOS Build Status](https://circleci.com/gh/atom/atom/tree/master.svg?style=shield)](https://circleci.com/gh/atom/atom) [![Linux Build Status](https://travis-ci.org/atom/atom.svg?branch=master)](https://travis-ci.org/atom/atom) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/1tkktwh654w07eim?svg=true)](https://ci.appveyor.com/project/Atom/atom)
-[![Dependency Status](https://david-dm.org/atom/atom.svg)](https://david-dm.org/atom/atom)
-[![Join the Atom Community on Slack](https://atom-slack.herokuapp.com/badge.svg)](https://atom-slack.herokuapp.com)
+### Supported Atom versions
 
-Atom is a hackable text editor for the 21st century, built on [Electron](https://github.com/atom/electron), and based on everything we love about our favorite editors. We designed it to be deeply customizable, but still approachable using the default configuration.
+All Atom versions greater than or equal to `v1.13.0` are supported.
 
-Visit [atom.io](https://atom.io) to learn more or visit the [Atom forum](https://discuss.atom.io).
+### Supported operating systems
 
-Follow [@AtomEditor](https://twitter.com/atomeditor) on Twitter for important
-announcements.
+All OS's supported by Kite are also supported by the Atom plugin, currently it supports:
+- OSX (10.10 and higher)
+- Windows (7 and higher)
 
-This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.md).
-By participating, you are expected to uphold this code. Please report unacceptable behavior to atom@github.com.
+### Supported languages
 
-## Documentation
+The plugin's features are only available in file types supported by the Kite engine:
 
-If you want to read about using Atom or developing packages in Atom, the [Atom Flight Manual](https://flight-manual.atom.io) is free and available online. You can find the source to the manual in [atom/flight-manual.atom.io](https://github.com/atom/flight-manual.atom.io).
+- Python: All files with a `.py` extension are supported.
 
-The [API reference](https://atom.io/docs/api) for developing packages is also documented on Atom.io.
+### Install
 
-## Installing
+You can install the Atom plugin from Kite directly. You can also install the plugin by searching for "Kite" in the package manager or by running `apm install kite` in your terminal.
 
-### Prerequisites
-- [Git](https://git-scm.com)
+### Startup
 
-### macOS
+When starting Atom with Kite plugin for the first time, a brief tour about Kite will be displayed in the active pane.
 
-Download the latest [Atom release](https://github.com/atom/atom/releases/latest).
+![kite tour](./docs/images/kite-tour.png)
 
-Atom will automatically update when a new release is available.
+This tour will only be displayed once. If you want to see it again on next startup you can activate the `Show Kite Tour On Startup` setting.
 
-### Windows
+### Status bar
 
-Download the latest [Atom installer](https://github.com/atom/atom/releases/latest). `AtomSetup.exe` is 32-bit. For 64-bit systems, download `AtomSetup-x64.exe`.
+The Kite icon in the status bar displays the state of Kite for the current file. Clicking on the icon will open the status panel with additional information.
 
-Atom will automatically update when a new release is available.
+The icon in the status bar can take three different colors:
 
-You can also download `atom-windows.zip` (32-bit) or `atom-x64-windows.zip` (64-bit) from the [releases page](https://github.com/atom/atom/releases/latest).
-The `.zip` version will not automatically update.
+- blue: The Kite Engine is available and functioning properly.<br/>![kite tour](./docs/images/kite-status-ready.png)
+- gray: There's either no open file or, if there's an active file, the file is either not supported or not whitelisted.<br/>![kite tour](./docs/images/kite-status-not-whitelisted.png)
+- red: Something went wrong when the plugin tried to contact the Kite service on your computer. Depending on the issue, the status panel can offer actions to solve the problem.<br/>![kite tour](./docs/images/kite-status-not-running.png)
 
-Using [Chocolatey](https://chocolatey.org)? Run `cinst Atom` to install the latest version of Atom.
+### Editor features
 
-### Linux
+#### Hover info
 
-Atom is only available for 64-bit Linux systems.
+When you move the mouse over an expression, Kite can display a popup with a quick summary of what this expression represents, and links to additional documentation.
 
-Configure your distribution's package manager to install and update Atom by following the [Linux installation instructions](https://flight-manual.atom.io/getting-started/sections/installing-atom/#platform-linux) in the Flight Manual.  You will also find instructions on how to install Atom's official Linux packages without using a package repository, though you will not get automatic updates after installing Atom this way.
+![kite hover](./docs/images/kite-hover.png)
 
-### Archive extraction
+You can see up to three links in the popup:
 
-An archive is available for people who don't want to install `atom` as root.
+- `def` will open the file where this symbol is defined (this may not be available if Kite cannot find the definition)
+- `web` will open the symbol documentation page in your browser
+- `more` will open the [Kite sidebar panel](#sidebar-panel) with additional documentation for this symbol
 
-This version enables you to install multiple Atom versions in parallel. It has been built on Ubuntu 64-bit,
-but should be compatible with other Linux distributions.
+#### Completions
 
-1. Install dependencies (on Ubuntu): `sudo apt install git gconf2 gconf-service libgtk2.0-0 libudev1 libgcrypt20 libnotify4 libxtst6 libnss3 python gvfs-bin xdg-utils libcap2`
-2. Download `atom-amd64.tar.gz` from the [Atom releases page](https://github.com/atom/atom/releases/latest).
-3. Run `tar xf atom-amd64.tar.gz` in the directory where you want to extract the Atom folder.
-4. Launch Atom using the installed `atom` command from the newly extracted directory.
+Kite exposes an `autocomplete-plus` provider. When in a supported file, you'll be able to see Kite's suggestions as well as some additional documentation and links in the `autocomplete-plus` panel.
 
-The Linux version does not currently automatically update so you will need to
-repeat these steps to upgrade to future releases.
+![kite completions](./docs/images/kite-completions.png)
 
-## Building
+The links at the bottom have the same behaviour of those in the [hover UI](#hover-documentation).
 
-* [FreeBSD](./docs/build-instructions/freebsd.md)
-* [Linux](https://flight-manual.atom.io/hacking-atom/sections/hacking-on-atom-core/#platform-linux)
-* [macOS](https://flight-manual.atom.io/hacking-atom/sections/hacking-on-atom-core/#platform-mac)
-* [Windows](https://flight-manual.atom.io/hacking-atom/sections/hacking-on-atom-core/#platform-windows)
+#### Function signatures
 
-## Discussion
+When typing inside a function's parentheses, Kite will display the function signature with info about the current argument and links to additional documentation.
 
-* Discuss Atom on our [forums](https://discuss.atom.io/)
-* Chat about Atom on our Slack team -- [instructions for joining](https://discuss.atom.io/t/join-us-on-slack/16638?source_topic_id=25406)
+![kite signatures](./docs/images/kite-signature.png)
 
-## License
+The links at the bottom have the same behavior of those in the [hover popup](#hover-info).
 
-[MIT](https://github.com/atom/atom/blob/master/LICENSE.md)
+#### Sidebar
 
-When using the Atom or other GitHub logos, be sure to follow the [GitHub logo guidelines](https://github.com/logos).
+Kite sidebar offers more detailed docs. You can use the sidebar to browse the members of a module or a type, to access curated examples, and more.
+
+![kite sidebar](./docs/images/kite-sidebar.png)
+
+#### Search
+
+When working in a supported file, this small overlay will be displayed at the bottom right of the workspace.
+
+![kite sidebar](./docs/images/kite-active-search-collapsed.png)
+
+Clicking on it will expand Kite search panel. It allows you to search for identifiers from 3rd party packages or your local codebase.
+
+![kite sidebar](./docs/images/kite-active-search.png)
+
+### Commands
+
+Kite exposes many commands so that you can setup your own keybindings for them.
+
+|Command|Description|
+|---|---|
+|`kite:search`|Expand the search panel.|
+|`kite:docs-at-cursor`|When the cursor is inside an expression, this command will open the sidebar with relevant docs.|
+|`kite:open-permissions`|Opens Kite permissions into your browser.|
+|`kite:open-settings`|Opens Kite settings into your browser.|
+|`kite:open-sidebar`|Opens Kite sidebar.|
+|`kite:close-sidebar`|Closes Kite sidebar.|
+|`kite:toggle-sidebar`|Toggle Kite sidebar panel (this will close the panel if it was open, or vice versa).|
